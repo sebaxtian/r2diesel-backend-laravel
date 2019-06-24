@@ -20,3 +20,6 @@ Construccion de API para prueba tecnica en R2Diesel desarrollado usando como Bac
   * Realizar la configuracion del **hostname** para el proyecto como se describe aqui:
     - https://ideafalaz.blogspot.com/2019/06/instalar-y-configurar-laravel-php.html
     - El hosname utilizado para el proyecto es **r2diesel-backend.test**
+
+* La documentacion de como hacer uso de los end points del API se encuentra aqui:
+  - Postman: https://documenter.getpostman.com/view/2374715/S1a3487g
