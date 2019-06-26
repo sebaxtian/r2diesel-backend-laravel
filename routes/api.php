@@ -34,9 +34,9 @@ Route::middleware('api')->get('/hello', function (Request $request) {
 
 Route::middleware('api')->post('/user', function (Request $request) {
     $user = new User;
-    $user->name = $request->query('name');
-    $user->email = $request->query('email');
-    $user->password = Hash::make($request->query('password'));
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->password = Hash::make($request->input('password'));
     $user->api_token = Str::random(60);
     try {
         $user->save();
@@ -78,8 +78,8 @@ Route::middleware('auth:api')->get('/users', function (Request $request) {
 
 Route::middleware('auth:api')->post('/tema', function (Request $request) {
     $tema = new Tema;
-    $tema->nombre = $request->query('nombre');
-    $tema->descripcion = $request->query('descripcion');
+    $tema->nombre = $request->input('nombre');
+    $tema->descripcion = $request->input('descripcion');
     try {
         $tema->save();
         $tema = Tema::where('nombre', $tema->nombre)->first();
@@ -91,8 +91,8 @@ Route::middleware('auth:api')->post('/tema', function (Request $request) {
 
 
 Route::middleware('auth:api')->post('/suscripcion', function (Request $request) {
-    $id_user = $request->query('id_user');
-    $id_tema = $request->query('id_tema');
+    $id_user = $request->input('id_user');
+    $id_tema = $request->input('id_tema');
     try {
         $user = User::find($id_user);
         if ($user) {
@@ -124,9 +124,9 @@ Route::middleware('auth:api')->get('/temas', function (Request $request) {
 
 Route::middleware('auth:api')->post('/temas/noticia', function (Request $request) {
     $noticia = new Noticia;
-    $id_tema = $request->query('id_tema');
-    $noticia->titular = $request->query('titular');
-    $noticia->url = $request->query('url');
+    $id_tema = $request->input('id_tema');
+    $noticia->titular = $request->input('titular');
+    $noticia->url = $request->input('url');
     try {
         $tema = Tema::find($id_tema);
         if ($tema) {
